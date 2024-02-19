@@ -90,6 +90,7 @@ void MainWindow::ageControl()
         if (animals[i]->rad_age > 77)
         {
             toLog(animals[i]->color == QColor(255, 0, 0) ? "Predator died" : "Vegan died");
+            delete animals[i];
             animals[i] = bornNew();
             death->play();
         }
