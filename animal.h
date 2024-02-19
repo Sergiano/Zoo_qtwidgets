@@ -18,9 +18,9 @@ public:
     int rad_age;
     QColor color;
 
-    void Tick(QPainter *qp);
+    virtual void Tick(QPainter *qp);
 
-private:
+protected:
     void move();
 };
 

@@ -15,14 +15,16 @@ MainWindow::MainWindow(QWidget *parent) :
     QDateTime cd = QDateTime::currentDateTime();
     qsrand(cd.toTime_t());
 
-    animals = new Animal*[ANI_COUNT];
+    //animals = new Animal*[ANI_COUNT];
 
     for(int i = 0; i < ANI_COUNT; i++)
     {
         if(qrand() % 2 == 0)
-            animals[i] = new Predator(getRandomX(), getRandomY());
+            animals.append(new Predator(getRandomX(), getRandomY()));
+            //animals[i] = new Predator(getRandomX(), getRandomY());
         else
-            animals[i] = new Vegan(getRandomX(), getRandomY());
+            animals.append(new Vegan(getRandomX(), getRandomY()));
+            //animals[i] = new Vegan(getRandomX(), getRandomY());
 
         animals[i]->rad_age = qrand() % ((77 + 1) - 5) + 5;
     }
@@ -35,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    delete animals;
+    //delete animals;
     delete ui;
 }
 
@@ -112,6 +114,7 @@ void MainWindow::huntControl()
                     {
                         bear->play();
                         toLog("Predator killed, age: " + QString::number(animals[j]->rad_age));
+                        delete animals[j];
                         animals[j] = bornNew();
                     }
                     // хищник и веган
@@ -120,6 +123,7 @@ void MainWindow::huntControl()
                     {
                         chicken->play();
                         toLog("Vegan killed, age: " + QString::number(animals[j]->rad_age));
+                        delete animals[j];
                         animals[j] = bornNew();
 
                     }

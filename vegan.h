@@ -10,6 +10,7 @@ class Vegan : public Animal
 {
 public:
     Vegan(int coord_x, int coord_y);
+    void Tick(QPainter *qp) override;
 };
 
 #endif // VEGAN_H

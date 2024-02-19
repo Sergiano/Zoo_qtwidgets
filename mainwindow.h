@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QTimer>
 #include <QMessageBox>
+#include <QVector>
 #include <QDateTime>
 #include <QtCore>
 #include <QSound>
@@ -38,7 +39,8 @@ private:
     Ui::MainWindow *ui;
     QPainter *qpaint;
     QTimer *qtim;
-    Animal **animals;
+    //Animal **animals;
+    QVector<Animal*> animals;
     QList<QString> log;
 
     int getRandomX();
